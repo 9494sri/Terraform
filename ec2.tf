@@ -1,3 +1,4 @@
+
  resource "aws_instance" "this"{
 
     ami = "ami-09c813fb71547fc4f"
@@ -36,3 +37,23 @@ resource "aws_security_group" "allow_tls" {
     Name = "allow_tls"
   }
 }
+
+/*
+
+This Terraform configuration defines two resources:
+
+1. **aws_instance.this**:
+    - Creates an EC2 instance using the specified AMI (`ami-09c813fb71547fc4f`) and instance type (`t2.micro`).
+    - Associates the instance with a security group (`aws_security_group.allow_tls`) to manage network access.
+    - Tags the instance with `Name` as "terraform-demo" and `Purpose` as "terraform-practice".
+
+2. **aws_security_group.allow_tls**:
+    - Creates a security group named "allow_tls" to manage inbound and outbound traffic.
+    - Inbound rules:
+      - Allows SSH traffic (TCP port 22) from any IP address (`0.0.0.0/0`).
+    - Outbound rules:
+      - Allows all traffic (`protocol = "-1"`) to any IP address (`0.0.0.0/0`).
+    - Tags the security group with `Name` as "allow_tls".
+
+This configuration is intended for practice purposes and demonstrates basic EC2 instance creation and security group setup in Terraform.
+*/
